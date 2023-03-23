@@ -1,0 +1,30 @@
+Message:
+  atMaxLevel: "&e您已经达到最高等级，无法继续升级!"
+  errorLevel: "&c禁止出现等级倒退的情况!"
+  noPermToLevelUp: "&c您没有升到该等级的权限!"
+  LevelDifference: "&c您与对方玩家等级差距过大,无法攻击对方!"
+  newPlayerProtect: "&c您或您攻击的玩家处于新手保护阶段,无法攻击!"
+  reload: "&b[ZLevelSetting] &a重载成功!"
+Max-Level-Setting:
+  #拥有特定权限才能达到该等级
+  50: "zlevelsetting.50"
+  60: "zlevelsetting.60"
+custom-levels:
+  max-level: 120
+#等级保护机制，与攻击对象的等级差距超过配置值，攻击无效
+Protect:
+  #新手玩家等级限制
+  newplayer: 30
+  #玩家打玩家 等级差距
+  playerlimit: 15
+Events:
+  OnEveryLevelUp:
+    enable: true
+    commands:
+      - "give %cmi_user_name% STONE 1"
+      - "broadcast 恭喜%cmi_user_name%升到了%player_level%级"
+  OnSpecialLevelUp:
+    enable: true
+    #第15级
+    15:
+      - "give %cmi_user_name% GRASS 15"
