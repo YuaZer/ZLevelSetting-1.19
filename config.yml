@@ -4,7 +4,17 @@ Message:
   noPermToLevelUp: "&c您没有升到该等级的权限!"
   LevelDifference: "&c您与对方玩家等级差距过大,无法攻击对方!"
   newPlayerProtect: "&c您或您攻击的玩家处于新手保护阶段,无法攻击!"
+  atLimitExp: "&c您获取的经验值过多,已经达到了每日限额!"
   reload: "&b[ZLevelSetting] &a重载成功!"
+Max-Exp-Limit:
+  enable: true
+  SpecialPerm:
+    #拥有ZLevelSetting.speciallimit.vip2权限的人可以拥有更高的经验限制
+    #从高向低写
+    vip2: 600
+    vip1: 500
+  #没有任何特殊权限的玩家的限制经验值
+  default: 200
 Max-Level-Setting:
   #拥有特定权限才能达到该等级
   50: "zlevelsetting.50"
