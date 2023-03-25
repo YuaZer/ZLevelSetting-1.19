@@ -3,12 +3,15 @@ package io.github.yuazer.zlevelsetting.Events;
 import io.github.yuazer.zlevelsetting.Main;
 import io.github.yuazer.zlevelsetting.Utils.YamlUtils;
 import me.clip.placeholderapi.PlaceholderAPI;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.event.player.PlayerLevelChangeEvent;
+
 
 public class Exp implements Listener {
 
@@ -84,9 +87,13 @@ public class Exp implements Listener {
                 e.setAmount(limit - Main.getDailyExp().getOrDefault(player.getUniqueId(), 0) + getAmount);
                 Main.getDailyExp().put(player.getUniqueId(), Main.getDailyExp().getOrDefault(player.getUniqueId(), 0) + getAmount);
             }
-            player.sendMessage(YamlUtils.getConfigMessage("Message.atLimitExp"));
+//            player.sendMessage(YamlUtils.getConfigMessage("Message.atLimitExp"));
+            sendActionBar(player,YamlUtils.getConfigMessage("Message.atLimitExp"));
             return true;
         }
         return false;
+    }
+    public void sendActionBar(Player player, String message) {
+        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(message));
     }
 }
