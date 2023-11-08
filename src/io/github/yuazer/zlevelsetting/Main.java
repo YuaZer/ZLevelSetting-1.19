@@ -1,6 +1,7 @@
 package io.github.yuazer.zlevelsetting;
 
 import io.github.yuazer.zlevelsetting.Commands.MainCommand;
+import io.github.yuazer.zlevelsetting.Events.Attack;
 import io.github.yuazer.zlevelsetting.Events.Exp;
 import io.github.yuazer.zlevelsetting.Events.PlayerEvents;
 import io.github.yuazer.zlevelsetting.Hook.PAPIHook;
@@ -60,7 +61,8 @@ public class Main extends JavaPlugin {
         InitLimit();
         logLoaded(this);
         Bukkit.getPluginManager().registerEvents(new Exp(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerEvents(),this);
+        Bukkit.getPluginManager().registerEvents(new PlayerEvents(), this);
+        Bukkit.getPluginManager().registerEvents(new Attack(), this);
         Bukkit.getPluginCommand("zlevelsetting").setExecutor(new MainCommand());
         saveDefaultConfig();
         PAPIHook papiHook = new PAPIHook();
@@ -103,7 +105,7 @@ public class Main extends JavaPlugin {
         logDisable(this);
         PAPIHook papiHook = new PAPIHook();
         papiHook.unregister();
-        for (UUID key:getDailyExp().keySet()){
+        for (UUID key : getDailyExp().keySet()) {
             getMaxExpLimitConf().set(String.valueOf(key), dailyExp.getOrDefault(key, 0));
         }
         saveMaxExpLimitConf(getMaxExpLimitConf());

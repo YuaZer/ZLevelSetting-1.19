@@ -14,6 +14,9 @@ public class Attack implements Listener {
         if (e.getDamager() instanceof Player && e.getEntity() instanceof Player) {
             Player attacker = Bukkit.getPlayer(e.getDamager().getUniqueId());
             Player victim = Bukkit.getPlayer(e.getEntity().getUniqueId());
+            if (attacker==null||victim==null){
+                return;
+            }
             if (attacker.getLevel()<=YamlUtils.getConfigInt("Protect.newplayer")||victim.getLevel()<=YamlUtils.getConfigInt("Protect.newplayer")){
                 e.setCancelled(true);
                 attacker.sendMessage(YamlUtils.getConfigMessage("Message.newPlayerProtect"));
